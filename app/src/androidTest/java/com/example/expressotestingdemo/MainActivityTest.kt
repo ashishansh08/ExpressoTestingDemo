@@ -1,7 +1,13 @@
 package com.example.expressotestingdemo
 
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.ViewInteraction
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -17,8 +23,16 @@ class MainActivityTest {
     @Test
     fun testActivity_inView() {
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-
         onView(withId(R.id.mainLayout)).check(matches(isDisplayed()))
+
+        // WHEN
+        onView(withId(R.id.mainEditTextEmail)).perform(typeText("ash"))
+        onView(withId(R.id.mainEditTextPassword)).perform(typeText("singh"))
+        closeSoftKeyboard()
+        onView(withId(R.id.mainButtonSubmit)).perform(click())
     }
 
+}
+
+private fun ViewInteraction.perform(typeText: ViewAction?, closeSoftKeyboard: Unit) {
 }
