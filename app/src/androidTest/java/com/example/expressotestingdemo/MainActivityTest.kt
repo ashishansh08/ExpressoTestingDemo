@@ -1,59 +1,24 @@
 package com.example.expressotestingdemo
 
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.closeSoftKeyboard
+import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.ViewAction
-import androidx.test.espresso.ViewInteraction
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import androidx.test.rule.ActivityTestRule
-import org.hamcrest.CoreMatchers.containsString
-import org.junit.Before
-import org.junit.Rule
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.regex.Pattern.matches
 
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4ClassRunner::class)
 @LargeTest
-class MainActivityTest{
-    private lateinit var stringToBetyped: String
-
-    @get:Rule
-    var activityRule: ActivityTestRule<MainActivity>
-            = ActivityTestRule(MainActivity::class.java)
-
-    @Before
-    fun initValidString() {
-        // Specify a valid string.
-        stringToBetyped = "SUCCESS"
-    }
-
+class MainActivityTest {
     @Test
-    fun changeText_sameActivity() {
-        onView(withId(R.id.edt_email)).perform(typeText("ash"), closeSoftKeyboard());
+    fun testActivity_inView() {
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
-        onView(withId(R.id.edt_pass)).perform(typeText("singh"), closeSoftKeyboard());
-
-        onView(withId(R.id.btn_login)).perform(click());
-
-       // onView(withId(R.id.tv_result)).check(matches(withText("SUCCESS")));
-
-
-        /*perform(typeText(stringToBetyped), Espresso.closeSoftKeyboard())
-        onView(withId(R.id.btn_login)).perform(click())
-        onView(withId(R.id.tv_result)).check(matches(withText("SUCCESS")));*/
+        onView(withId(R.id.mainLayout)).check(matches(isDisplayed()))
     }
-}
-
-private fun ViewInteraction.perform(typeText: ViewAction?, closeSoftKeyboard: Unit) {
 
 }
-
-

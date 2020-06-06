@@ -5,10 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mainLayout"
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/edt_email"
+        android:id="@+id/mainEditTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email Id"
@@ -24,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edt_pass"
+        android:id="@+id/mainEditTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
@@ -37,10 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+        app:layout_constraintTop_toBottomOf="@+id/mainEditTextEmail" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/mainButtonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -52,10 +53,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_pass" />
+        app:layout_constraintTop_toBottomOf="@+id/mainEditTextPassword" />
 
     <TextView
-        android:id="@+id/tv_result"
+        android:id="@+id/mainTextViewResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -68,6 +69,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/mainButtonSubmit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,11 +10,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_login.setOnClickListener {
-            if (edt_email.text.toString()=="ash" && edt_pass.text.toString() == "singh"){
-                tv_result.text = "SUCCESS";
+        mainButtonSubmit.setOnClickListener {
+            if (mainEditTextEmail.text.toString()=="ash" && mainEditTextPassword.text.toString() == "singh"){
+                mainTextViewResult.text = "SUCCESS";
             }else{
-                tv_result.text = "Failed";
+                mainTextViewResult.text = "Failed";
             }
         }
     }
