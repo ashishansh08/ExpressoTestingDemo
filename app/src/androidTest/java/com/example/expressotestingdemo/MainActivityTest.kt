@@ -3,8 +3,7 @@ package com.example.expressotestingdemo
 import android.view.View
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.closeSoftKeyboard
-import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
@@ -24,19 +23,16 @@ class MainActivityTest {
     fun testActivity_inView() {
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
-        //check if activity top view is visible or not
+        //check if activity top view is visible or not, TWO WAYS :
         onView(withId(R.id.mainLayout)).check(matches(isDisplayed())) //Method 1
 
         onView(withId(R.id.mainButtonSubmit)).check(matches(withEffectiveVisibility(Visibility.VISIBLE))) //Method 2 for visibility check
 
-        //perform click
-        onView(withId(R.id.mainButtonSubmit)).perform(click())
     }
 
-
     @Test
-    fun enterUserNamePw(){
-        val activityScenario=ActivityScenario.launch(MainActivity::class.java)
+    fun navigateToSecondaryActivity(){
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
         //Enter username and pw
         onView(withId(R.id.mainEditTextEmail)).perform(typeText("ash"))
@@ -47,5 +43,14 @@ class MainActivityTest {
 
         //perform click
         onView(withId(R.id.mainButtonSubmit)).perform(click())
+
+        onView(withId(R.id.secondaryMainLayout)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+
+        //FOR NAVIGATING BACK, TWO WAYS :
+        // onView(withId(R.id.mainButtonSubmit)).perform(click()) //WAY ONE
+        pressBack() //WAY TWO
+
+        //Check if first fragment view is visible or not
+        onView(withId(R.id.mainLayout)).check(matches(isDisplayed()))
     }
 }

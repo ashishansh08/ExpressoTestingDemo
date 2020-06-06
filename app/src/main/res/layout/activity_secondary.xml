@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/secondary">
+    android:id="@+id/secondaryMainLayout">
 
     <TextView
         android:id="@+id/activitySecondaryTextViewTitle"
@@ -25,9 +25,22 @@
         android:id="@+id/actvitySecondaryButtonBack"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_secondary_title"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/activitySecondaryTextViewTitle"
+        android:text="Go back" />
+
+    <Button
+        android:id="@+id/actvitySecondaryButtonStartFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actvitySecondaryButtonBack"
         android:layout_marginTop="50dp"
-        android:text="Go back"
+        android:text="CLICK HERE TO CHECK MOVIE DETAILS"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
