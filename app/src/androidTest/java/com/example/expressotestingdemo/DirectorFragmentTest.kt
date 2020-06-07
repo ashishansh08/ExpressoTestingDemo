@@ -9,32 +9,31 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import com.example.expressotestingdemo.ui.fragments.MovieDetailFragment
-import kotlinx.android.synthetic.main.fragment_movie_detail.*
+import com.example.expressotestingdemo.ui.fragments.ActorFragment
+import com.example.expressotestingdemo.ui.fragments.DirectorFragment
+import com.example.expressotestingdemo.ui.fragments.stringBuilderForDirectors
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 @LargeTest
-class MovieDetailFragmentTest {
+class DirectorFragmentTest {
 
     @Test
-    fun isMovieDataAvaialble(){
-        //SETUP
-        val muvie = DummyMovies.THE_RUNDOWN
-        val fragmentFactory= MovieFragmentFactory()
-        val bundle= Bundle()
-        bundle.putInt("movie_id", muvie.id)
+    fun checkIfDirectorListSet(){
+        //Setup
+        val directors = arrayListOf("R.J. Stewart", "James Vanderbilt")
 
-        val scenario = launchFragmentInContainer<MovieDetailFragment>(
+        val bundle=Bundle()
+        val fragmentFactory=MovieFragmentFactory()
+        bundle.putStringArrayList("args_directors", directors)
+
+        val scenario = launchFragmentInContainer<DirectorFragment>(
             fragmentArgs = bundle,
             factory = fragmentFactory
         )
 
-        onView(withId(R.id.movie_title)).check(matches(withText(muvie.title)))
-
-
-
+        //Verify
+        onView(withId(R.id.directors_text)).check(matches(withText(directors.stringBuilderForDirectors())))
     }
-
 }
