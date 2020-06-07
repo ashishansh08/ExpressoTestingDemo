@@ -14,16 +14,6 @@ class MovieDetailFragment: Fragment() {
 
     private lateinit var movie: Movie
 
-    companion object {
-        fun newInstance(movieId: Int): MovieDetailFragment {
-            val fragment = MovieDetailFragment()
-            val args = Bundle()
-            args.putInt("movie_id", movieId)
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let { args ->
@@ -48,15 +38,19 @@ class MovieDetailFragment: Fragment() {
         setMovieDetails()
 
         movie_directiors.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putStringArrayList("args_directors", movie.directors)
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.containerMovieLayout, DirectorFragment.getInstance(movie.directors), null)
+                ?.replace(R.id.containerMovieLayout, DirectorFragment::class.java, bundle)
                 ?.addToBackStack("DirectorsFragment")
                 ?.commit()
         }
 
         movie_star_actors.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putStringArrayList("args_actors", movie.star_actors)
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.containerMovieLayout, ActorFragment.getInstance(movie.star_actors!!))
+                ?.replace(R.id.containerMovieLayout, ActorFragment::class.java, bundle)
                 ?.addToBackStack("StarActorsFragment")
                 ?.commit()
         }
