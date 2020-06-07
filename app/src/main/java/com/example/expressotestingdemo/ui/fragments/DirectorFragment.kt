@@ -41,15 +41,12 @@ class DirectorFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setDirectors()
     }
 
     private fun setDirectors(){
         directors_text.text = directors.stringBuilderForDirectors()
     }
-
-
 }
 
 fun ArrayList<String>.stringBuilderForDirectors(): String{
