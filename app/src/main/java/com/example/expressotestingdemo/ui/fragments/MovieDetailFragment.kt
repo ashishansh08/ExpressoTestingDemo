@@ -48,7 +48,10 @@ class MovieDetailFragment: Fragment() {
         setMovieDetails()
 
         movie_directiors.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.containerMovieLayout, DirectorFragment.getInstance(movie.directors), null)?.addToBackStack("DirectorsFragment")?.commit()
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.containerMovieLayout, DirectorFragment.getInstance(movie.directors), null)
+                ?.addToBackStack("DirectorsFragment")
+                ?.commit()
         }
 
         movie_star_actors.setOnClickListener {
