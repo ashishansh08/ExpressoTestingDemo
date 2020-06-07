@@ -1,4 +1,4 @@
-package com.example.expressotestingdemo
+package com.example.expressotestingdemo.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.codingwithmitch.espressouitestexamples.data.source.MoviesRemoteDataSource
+import com.example.expressotestingdemo.R
 import com.example.expressotestingdemo.model.Movie
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 
@@ -47,11 +48,14 @@ class MovieDetailFragment: Fragment() {
         setMovieDetails()
 
         movie_directiors.setOnClickListener {
-            //New Fragment
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.containerMovieLayout, DirectorFragment.getInstance(movie.directors), null)?.addToBackStack("DirectorsFragment")?.commit()
         }
 
         movie_star_actors.setOnClickListener {
-           //New Frag
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.containerMovieLayout, ActorFragment.getInstance(movie.star_actors!!))
+                ?.addToBackStack("StarActorsFragment")
+                ?.commit()
         }
     }
 

@@ -1,8 +1,9 @@
-package com.example.expressotestingdemo
+package com.example.expressotestingdemo.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.expressotestingdemo.R
 import kotlinx.android.synthetic.main.activity_secondary.*
 
 class SecondaryActivity : AppCompatActivity() {
